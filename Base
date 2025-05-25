@@ -1,0 +1,14 @@
+CyberHuntAI/
+├── main.py
+├── /core
+│   ├── puzzles.py         # All challenge logic
+│   ├── ai_hacker.py       # AI opponent
+│   ├── scoring.py         # Score/time-based logic
+│   └── game_engine.py     # Game orchestration
+├── /data
+│   └── logs/
+│   └── challenges/
+├── README.md
+├── requirements.txt
+└── /tests
+    └── test_ai_logic.py

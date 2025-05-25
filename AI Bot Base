@@ -1,0 +1,90 @@
+====================================================
+🧠 CyberHunt Lite - AI Bot Specification: "MiniMind"
+====================================================
+
+Overview:
+---------
+MiniMind is a lightweight, offline AI bot designed to simulate intelligent behavior during terminal-based puzzle gameplay. It does NOT use any real machine learning or external APIs. Instead, it uses logical rules, permutations, pattern-matching, and sarcasm to appear smart.
+
+Purpose:
+--------
+- Compete against the player in solving puzzles
+- Make puzzle-solving feel dynamic and unpredictable
+- Create a sense of tension, challenge, and fun
+
+Key Features:
+-------------
+1. Caesar Cipher Solver
+   - Brute-force all 25 possible Caesar shifts
+   - Cross-reference decoded text against a basic English word list
+   - Choose the best-looking result
+   - Approximate "AI-like" decryption without randomness
+
+2. Word Scramble Solver
+   - Generate all permutations of scrambled letters
+   - Validate each permutation against a known word list
+   - Select the first valid match
+
+3. Adaptive Memory
+   - Tracks previously failed attempts (optional)
+   - Avoids repeating wrong guesses
+   - Can be expanded to mimic "learning" behavior
+
+4. Personality Engine
+   - Responds with randomized witty or sarcastic remarks
+   - Dialogue changes based on win/loss/tie context
+   - Simulates emotional intelligence without actual NLP
+
+5. Game Flow Participation
+   - Takes alternate turns with the player
+   - Returns guesses for each puzzle
+   - Score tracked like a regular player
+
+Optional Stretch Features:
+--------------------------
+- Dynamic difficulty: make the AI smarter as the game progresses
+- Cheating chance: AI can skip puzzles, steal answers, or fake solving them
+- Player behavior tracking: responds differently based on user patterns
+- Fake hint system: gives misleading hints or semi-helpful ones
+
+Tech Stack:
+-----------
+- Language: Python 3.x
+- Libraries Used:
+  - random
+  - itertools
+  - string
+  - (Optional) nltk or a simple text-based word list
+
+File Structure Integration:
+---------------------------
+- ai_bot.py         → Core bot class and logic
+- wordlist.txt      → Word list for validation (unscramble, caesar)
+- utils.py          → Shared functions (e.g., load_word_list)
+- puzzles.py        → Bot plugs into puzzle logic via interface
+
+Class Sketch:
+-------------
+class MiniMind:
+    def __init__(self, word_list):
+        self.word_list = word_list
+        self.memory = set()
+
+    def solve_caesar(self, text):
+        # Brute-force decryption + word validation
+        pass
+
+    def solve_scramble(self, scrambled):
+        # Permutation matching against word list
+        pass
+
+    def respond(self, context):
+        # Sarcastic/fun dialogue generator
+        pass
+
+    def record_fail(self, guess):
+        self.memory.add(guess)
+
+Summary:
+--------
+MiniMind is not a true AI — it’s a cleverly coded illusion of one. Its primary strength lies in basic logic, rule-based decision-making, and a fun, reactive personality. It's designed to impress without the need for ML or external APIs, making it ideal for educational and offline environments.
