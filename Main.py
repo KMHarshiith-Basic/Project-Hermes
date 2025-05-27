@@ -18,19 +18,19 @@ def start():
     time.sleep(2)  # Simulate game start delay
     print(Fore.YELLOW + "You are now in the CyberHunt world!".center(60))
     input("Press Enter to play again...")
-    b=1  # Reset wellcome screen flag
-    wellcome_screen()
+    b=1  # Reset welcome screen flag
+    welcome_screen()
     # Further game logic would go here
 
 b=1
-#Wellcom screen
-def wellcome_screen(a=1):
+#welcome screen
+def welcome_screen(a=1):
     global b
     utils.clear_screen()
     width = 35
     #utils.print_border(width+65)
     print(Fore.MAGENTA + title)
-    utils.boxed("wellcome to your next cyber trial.\nReady to play?")
+    utils.boxed("welcome to your next cyber trial.\nReady to play?")
     utils.print_centered("1. Start Game", width)
     if a == 1:
         utils.print_centered("2. Instructions", width)
@@ -47,7 +47,7 @@ def wellcome_screen(a=1):
         b=0
         print(Fore.YELLOW + "\nInstructions: Solve puzzles, Beat the bot, Find the Cyber Assasin".center(width))
         input("\nPress Enter to return to menu.".center(width))
-        wellcome_screen(b)
+        welcome_screen(b)
     elif choice == '3':
         print(Fore.RED + "\nQuiting the experience...")
         time.sleep(random.random()*2+1.5)  # Simulate a delay for dramatic effect
@@ -57,6 +57,6 @@ def wellcome_screen(a=1):
     else:
         print(Fore.RED + "\nInvalid choice, try again.".center(width))
         input("Press Enter to continue.".center(width))
-        wellcome_screen(b)
+        welcome_screen(b)
 
-wellcome_screen()
+welcome_screen()
