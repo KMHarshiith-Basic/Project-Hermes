@@ -122,8 +122,10 @@ def welcome_screen(a=1):
         if info:
             print(Fore.CYAN + "\nYour Info:".center(width))
             utils.print_border(width)
-            print(Fore.GREEN + f"Username: {info[1]}\nID: {info[0]}\nGames Played {info[2]}\nRating1: {info[4]}\nRating2: {info[5]}\nRating3: {info[6]}".center(width))
+            print(Fore.GREEN + f"Username: {info[1]}\nUser ID: {info[0]}\nPlayed: {info[2]}\nRating1: {info[4]}\nRating2: {info[5]}\nRating3: {info[6]}".center(width))
             utils.print_border(width)
+            input("Press Enter to return to menu.".center(width))
+            welcome_screen(b)
         else:
             print(Fore.RED + "\nUser not found, please try again.".center(width))
             input("Press Enter to return to menu.")
