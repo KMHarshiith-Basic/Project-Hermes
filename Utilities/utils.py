@@ -32,11 +32,11 @@ def thill():
     import time
     import random
     sounds = ["Beep...", "Bzzz...", "Ding!", "Ping!", "Buzz..."]
-    music = ["sounds/beep.mp3", "sounds/bzzz.mp3", "sounds/ding.mp3", "sounds/ping.mp3", "sounds/buzz.mp3"]
+    music = "sounds/beep.wav"
+    pygame.init()
+    pygame.mixer.init()
+    pygame.mixer.music.load(music)
+    pygame.mixer.music.play()
     for i in range(6):
         print(sounds[i-1])
-        pygame.init()
-        pygame.mixer.init()
-        pygame.mixer.music.load(music[i-1])
-        pygame.mixer.music.play()
-        time.sleep(random.uniform(0.5, 1.5))  # Random delay between sounds
+        time.sleep(random.uniform(0.5,1.1))  # Random delay between sounds

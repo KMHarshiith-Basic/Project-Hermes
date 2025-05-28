@@ -65,7 +65,7 @@ def go():
     utils.clear_screen()
     print(title)
     utils.print_border(60)
-    utils.print('new player(1) or existing player(2)?')
+    print('new player(1) or existing player(2)?')
     choice= input('Enter your choice: ').strip()
     if choice == '1':
         new_player()
