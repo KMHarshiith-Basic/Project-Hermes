@@ -45,7 +45,7 @@ def new_player():
     if UserInfo.check(name):
         print(Fore.RED + "Username already exists, please choose a different one.")
         input("Press Enter to try again...")
-        new_player()
+        go()
     elif name == '':
         print(Fore.RED + "Username cannot be empty, please try again.")
         new_player()
@@ -65,7 +65,7 @@ def go():
     utils.clear_screen()
     print(title)
     utils.print_border(60)
-    utils.print_centered('new player(1) or existing player(2)?')
+    utils.print('new player(1) or existing player(2)?')
     choice= input('Enter your choice: ').strip()
     if choice == '1':
         new_player()
