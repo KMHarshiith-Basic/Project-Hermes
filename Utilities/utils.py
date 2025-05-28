@@ -1,3 +1,4 @@
+import pygame
 def boxed(text):
     lines = text.split("\n")
     width = max(len(line) for line in lines)
@@ -16,3 +17,15 @@ def print_centered(text, width=60):
 
 def print_border(width=60):
     print("=" * width)
+
+def thill():
+    # Simulate a thrilling sound effect
+    import time
+    import random
+    sounds = ["Beep...", "Bzzz...", "Ding!", "Ping!", "Buzz..."]
+    music = ["sounds/beep.mp3", "sounds/bzzz.mp3", "sounds/ding.mp3", "sounds/ping.mp3", "sounds/buzz.mp3"]
+    for i in range(6):
+        print(sounds[i-1])
+        pygame.mixer.music.load(music[i-1])
+        pygame.mixer.music.play()
+        time.sleep(random.uniform(0.5, 1.5))  # Random delay between sounds

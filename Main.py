@@ -1,6 +1,8 @@
 import pyfiglet
 import time
 import random
+from Utilities import UserData
+from Utilities import Puzzles
 from Utilities import utils
 from colorama import Fore, Style, init
 init(autoreset=True)
@@ -14,13 +16,29 @@ def start():
     utils.print_border(60)
     print(Fore.GREEN + "Game Loading...".center(60))
     utils.print_border(60)
-    # Placeholder for game logic
     time.sleep(2)  # Simulate game start delay
     print(Fore.YELLOW + "You are now in the CyberHunt world!".center(60))
+    print(Fore.CYAN + "We have these misterious codes, crack them, and find the Cyber Assassin!".center(60))
+    A=list(Puzzles.puzzle1())  # Start the first puzzle
+    UserData.result(A)  # Store the result of the first puzzle
+    print(Fore.GREEN + "Puzzle 1 completed!".center(60))
+    print(Fore.YELLOW + "Now, let's see if you can beat the bot in the next challenge.".center(60))
+    time.sleep(2)  # Simulate a delay before the next challenge
+    B=list(Puzzles.puzzle2())  # Start the second puzzle
+    UserData.result(B)  # Store the result of the second puzzle
+    print(Fore.GREEN + "Puzzle 2 completed!".center(60))
+    print(Fore.YELLOW + "Now, you are ready to find the Cyber Assassin!".center(60))
+    time.sleep(2)  # Simulate a delay before the final challenge
+    C=list(Puzzles.puzzle3())  # Start the third puzzle
+    UserData.result(C)  # Store the result of the third puzzle
+    print(Fore.GREEN + "Puzzle 3 completed!".center(60))
+    print(Fore.YELLOW + "We have found some information about the Cyber Assassin!".center(60))
+    utils.thill()
+
+def end():
     input("Press Enter to play again...")
     b=1  # Reset welcome screen flag
     welcome_screen()
-    # Further game logic would go here
 
 b=1
 #welcome screen
