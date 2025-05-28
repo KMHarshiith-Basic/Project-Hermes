@@ -98,7 +98,8 @@ def welcome_screen(a=1):
         utils.print_centered("2. Instructions", width)
     else:
         utils.print_centered("2. Instructions (read once again)", width)
-    utils.print_centered("3. Exit", width)
+    utils.print_centered("3. Get Your Info", width)
+    utils.print_centered("4. Exit", width)
     utils.print_border(width+65)
     choice = input("Enter your choice: ".center(width)).strip()
     if choice == '1':
@@ -110,12 +111,23 @@ def welcome_screen(a=1):
         print(Fore.YELLOW + "\nInstructions: Solve puzzles, Beat the bot, Find the Cyber Assasin".center(width))
         input("\nPress Enter to return to menu.".center(width))
         welcome_screen(b)
-    elif choice == '3':
+    elif choice == '4':
         print(Fore.RED + "\nQuiting the experience...")
         time.sleep(random.random()*2+1.5)  # Simulate a delay for dramatic effect
         print(Fore.CYAN + "Closing the game...")
         time.sleep(random.random()*2)
         utils.print_border(width+65)
+    elif choice == '3':
+        info = UserInfo.get_data(UserInfo.id(input("Enter your username: ").strip()))
+        if info:
+            print(Fore.CYAN + "\nYour Info:".center(width))
+            utils.print_border(width)
+            print(Fore.GREEN + f"Username: {info[1]}\nID: {info[0]}\nGames Played {info[2]}\nRating1: {info[4]}\nRating2: {info[5]}\nRating3: {info[6]}".center(width))
+            utils.print_border(width)
+        else:
+            print(Fore.RED + "\nUser not found, please try again.".center(width))
+            input("Press Enter to return to menu.")
+            welcome_screen(b)
     else:
         print(Fore.RED + "\nInvalid choice, try again.".center(width))
         input("Press Enter to continue.".center(width))

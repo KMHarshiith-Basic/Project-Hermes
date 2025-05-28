@@ -30,5 +30,3 @@ def get_ratings(I): # Get player ratings
     c.execute('SELECT id, Rating1, Rating2, Rating3 FROM players WHERE id = ?', (I,))
     result = c.fetchone()  
     return result if result else None
-
-print(get_ratings(1))  # Example usage to print data for player with ID 1
