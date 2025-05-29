@@ -10,7 +10,7 @@ init(autoreset=True)
 title = pyfiglet.figlet_format("CyberHunt Lite", font="slant")
 
 # Game start function and logics
-def start():
+def start(I):
     utils.clear_screen()
     print(Fore.MAGENTA + title)
     utils.print_border(60)
@@ -21,23 +21,30 @@ def start():
     print(Fore.YELLOW + "You are now in the CyberHunt world!".center(60))
     print(Fore.CYAN + "We have these misterious codes, crack them, and find the Cyber Assassin!".center(60))
 
-    A=list(Puzzles.Word_Scramble())  # Start the first puzzle
-    UserInfo.result(A)  # Store the result of the first puzzle
+    #A=list(Puzzles.Word_Scramble(I))  # Start the first puzzle
+    #UserInfo.result1(I,A[0],A[1])  # Store the result of the first puzzle
+    Puzzles.Word_Scramble()  # Start the first puzzle
+    utils.print_border()
     print(Fore.GREEN + "Puzzle 1 completed!".center(60))
     print(Fore.YELLOW + "Now, let's see if you can beat the bot in the next challenge.".center(60))
     time.sleep(2)  # Simulate a delay before the next challenge
 
-    B=list(Puzzles.Number_Guessing())  # Start the second puzzle
-    UserInfo.result(B)  # Store the result of the second puzzle
+    #B=list(Puzzles.Number_Guessing(I))  # Start the second puzzle
+    #UserInfo.result2(I,B[0],B[1])  # Store the result of the second puzzle
+    Puzzles.Number_Guessing()  # Start the second puzzle
+    utils.print_border()
     print(Fore.GREEN + "Puzzle 2 completed!".center(60))
     print(Fore.YELLOW + "Now, you are ready to find the Cyber Assassin!".center(60))
     time.sleep(2)  # Simulate a delay before the final challenge
 
-    C=list(Puzzles.Caesar_Cipher())  # Start the third puzzle
-    UserInfo.result(C)  # Store the result of the third puzzle
+    #C=list(Puzzles.Caesar_Cipher(I))  # Start the third puzzle
+    #UserInfo.result3(I,C[0],C[1])  # Store the result of the third puzzle
+    Puzzles.Caesar_Cipher()  # Start the third puzzle
+    utils.print_border()
     print(Fore.GREEN + "Puzzle 3 completed!".center(60))
-    print(Fore.YELLOW + "We have found some information about the Cyber Assassin!".center(60))
-    utils.thill()
+    name = UserInfo.get_data(I)
+    print(Fore.YELLOW + f"We have found some information about the Cyber Assassin {name[1]}!".center(60))
+    utils.thrill()
 
 def end():
     input("Press Enter to play again...")
@@ -45,22 +52,29 @@ def end():
     welcome_screen()
 
 def new_player():
+    Try=0
     name = input('Enter your username: ').strip()
     if UserInfo.check(name):
-        print(Fore.RED + "Username already exists, please choose a different one.")
-        input("Press Enter to try again...")
-        go()
+        if Try==0:
+            print(Fore.RED + "Username already exists, please choose a different one.")
+            input("Press Enter to try again...")
+            new_player()
+        if Try==1:
+            print('Try logging in instead')
+            input('Press enter to return to previous page')
+            go()
     elif name == '':
         print(Fore.RED + "Username cannot be empty, please try again.")
         new_player()
     else:
         print('Your username will be set as : ' + Fore.GREEN + name)
-        if input('Are you sure? (yes/no): ').strip() == 'yes':
+        con=input('Are you sure? (yes/no): ').strip()
+        if con == 'yes' or con == 'y' or con == 'Y' or con == 'Yes' or con == 's' or con == 'S':
             UserInfo.new(name)
             print(Fore.GREEN + f"Welcome {name}, let's start the game!")
             print('Your username: ' + Fore.GREEN + name, 'Your ID: ' + Fore.GREEN + str(UserInfo.id(name)))
             input("Press Enter to continue...")
-            start()
+            start(UserInfo.id(name))
         else:
             print(Fore.RED + "Username not set, please try again.")
             new_player()
@@ -78,7 +92,7 @@ def go():
         if UserInfo.check(name):
             print(Fore.GREEN + f"Welcome back {name}, let's continue the game!")
             time.sleep(2)
-            start()
+            start(UserInfo.id(name))
         else:
             print(Fore.RED + "Username not found, please try again.")
             input("Press Enter to continue...")
@@ -112,11 +126,11 @@ def welcome_screen(a=1):
         go()  # Game start function
     elif choice == '2':
         b=0
-        print(Fore.YELLOW + "\nInstructions: Solve puzzles, Beat the bot, Find the Cyber Assasin".center(width))
+        print(Fore.YELLOW + "\nInstructions: Solve puzzles, Beat the bot, Find the Cyber Assassin".center(width))
         input("\nPress Enter to return to menu.".center(width))
         welcome_screen(b)
     elif choice == '4':
-        print(Fore.RED + "\nQuiting the experience...")
+        print(Fore.RED + "\nQuitting the experience...")
         time.sleep(random.random()*2+1.5)  # Simulate a delay for dramatic effect
         print(Fore.CYAN + "Closing the game...")
         time.sleep(random.random()*2)

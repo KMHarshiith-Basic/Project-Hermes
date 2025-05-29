@@ -27,7 +27,7 @@ def print_centered(text, width=60):
 def print_border(width=60):
     print("=" * width)
 
-def thill():
+def thrill():
     # Simulate a thrilling sound effect
     import time
     import random

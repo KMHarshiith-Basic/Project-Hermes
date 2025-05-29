@@ -32,3 +32,59 @@ def get_ratings(I): # Get player ratings
     c.execute('SELECT id, Rating1, Rating2, Rating3 FROM players WHERE id = ?', (I,))
     result = c.fetchone()  
     return result if result else None
+
+def result1(I,u,b):
+    R=get_ratings(I)
+    r=R[1]
+    if r<2000:
+        if u==1 and b==1:
+            c.execute('UPDATE players SET Rating1 = ? WHERE id = ?', (r+20,I))
+            ud.commit()
+        elif u==1 and b==0:
+            c.execute('UPDATE players SET Rating1 = ? WHERE id = ?', (r+50,I))
+            ud.commit()
+        elif u==0 and b==1:
+            c.execute('UPDATE players SET Rating1 = ? WHERE id = ?', (r-10,I))
+            ud.commit()
+        elif u==0 and b==0:
+            pass # Does not change anything
+    else:
+        c.execute('UPDATE players SET Rating1 = ? WHERE id = ?', (2000,I))
+
+def result2(I,u,b):
+    R=get_ratings(I)
+    r=R[2]
+    if r<2000:
+        if u==1 and b==1:
+            c.execute('UPDATE players SET Rating2 = ? WHERE id = ?', (r+20,I))
+            ud.commit()
+        elif u==1 and b==0:
+            c.execute('UPDATE players SET Rating2 = ? WHERE id = ?', (r+50,I))
+            ud.commit()
+        elif u==0 and b==1:
+            c.execute('UPDATE players SET Rating2 = ? WHERE id = ?', (r-10,I))
+            ud.commit()
+        elif u==0 and b==0:
+            pass # Does not change anything
+    else:
+        c.execute('UPDATE players SET Rating2 = ? WHERE id = ?', (2000,I))
+
+def result3(I,u,b):
+    R=get_ratings(I)
+    r=R[3]
+    if r<2000 and r>100:
+        if u==1 and b==1:
+            c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (r+20,I))
+            ud.commit()
+        elif u==1 and b==0:
+            c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (r+50,I))
+            ud.commit()
+        elif u==0 and b==1:
+            c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (r-10,I))
+            ud.commit()
+        elif u==0 and b==0:
+            pass # Does not change anything
+    elif r>=2000:
+        c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (2000,I))
+    else:
+        pass
