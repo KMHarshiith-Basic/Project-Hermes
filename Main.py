@@ -69,7 +69,7 @@ def new_player():
     else:
         print('Your username will be set as : ' + Fore.GREEN + name)
         con=input('Are you sure? (yes/no): ').strip()
-        if con == 'yes' or con == 'y' or con == 'Y' or con == 'Yes':
+        if con == 'yes' or con == 'y' or con == 'Y' or con == 'Yes' or con == 's' or con == 'S':
             UserInfo.new(name)
             print(Fore.GREEN + f"Welcome {name}, let's start the game!")
             print('Your username: ' + Fore.GREEN + name, 'Your ID: ' + Fore.GREEN + str(UserInfo.id(name)))
