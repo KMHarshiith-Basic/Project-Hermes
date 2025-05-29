@@ -1,0 +1,10 @@
+hints = {0:['no of corners of circle','a dog has how many hands','I am neutral'],
+         1:['I am beggining','everybody wants to be in my place','I am not commited'],
+         2:['the only even prime','partnership',"no of 'O' in full form of JEE"],
+         3:['triangle','This many wishes are granted by a genie','no of primary colours'],
+         4:['the only number spelled with same no of letters as its value','++++','what is (8+9**2+3)%11'],
+         5:['no of rings in olympics flag',' only digit where n² ends in n','I am the only prime number that is the sum of two consecutive primes'],
+         6:['faces of cube','Half a dozen','The number of Infinity Stones in the MCU'],
+         7:['thala for a reason','no of planets in our solar system','no of continents in the world'],
+         8:['no of planets in solar system','no of bits in a byte','what happens if you rotate infinitely'],
+         9:['atomic number of fluorine',"I'm the last stop before hitting double digits!",'I end many tales, and begin new sequences']}

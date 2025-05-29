@@ -1,18 +1,6 @@
 import random
-
-# For the word scramble and Caesar cipher puzzles, we will use the NLTK library to get a list of words.
-import nltk
-from nltk.corpus import words
-
-
-nltk.download('words')
-
-word_list = words.words()
-
-words = random.sample(word_list, 100)
-
-hints = ['no of corners of circle', 'beggining', 'the only even prime','triangle','the only number spelled with same no of letters as its value',
-           'no of rings in olympics flag','faces of cube','thala for a reason','no of planets in solar system','atomic number of fluorine',]
+from wordlist import words
+from hints import hints
 
 print("-----------------------------------------------------------------------------")
 
@@ -26,10 +14,12 @@ def Number_Guessing():
     digit = random.randint(100, 1000000)
 
     digilist = [int(d) for d in str(digit)]
+    
+    random_no = random.randint(0,3)
 
     for i in range(0,len(digilist)):
         x = digilist[i]
-        print(str(i+1)+'. '+hints[x])
+        print(str(i+1)+'. '+hints[x][random_no])
 
     ans = int(input("Enter the digit: "))
 
