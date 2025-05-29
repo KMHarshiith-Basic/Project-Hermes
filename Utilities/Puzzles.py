@@ -11,14 +11,12 @@ word_list = words.words()
 
 words = random.sample(word_list, 100)
 
-hints = ['no of corners of circle', 'beggining', 'the only even prime','triangle','the only number spelled with same no of letters as its value',
-           'no of rings in olympics flag','faces of cube','thala for a reason','no of planets in solar system','atomic number of fluorine',]
-
-print("-----------------------------------------------------------------------------")
+hints = ['Number of corners of circle', 'The Beggining', 'The only even prime','Triangle','The only number spelled with same number of letters as its value',
+           'Number of rings in olympics flag','Number of faces of a cube','Thala for a reason','Number of planets in solar system','Atomic number of fluorine',]
 
 def Number_Guessing():
 
-    print("Find the number.")
+    print("We have some clues about the IP address of the Assassin.")
     print("Here are your hints for the digits:")
 
     global hints
@@ -31,14 +29,12 @@ def Number_Guessing():
         x = digilist[i]
         print(str(i+1)+'. '+hints[x])
 
-    ans = int(input("Enter the digit: "))
+    ans = int(input("Enter the Number: "))
 
     if ans == digit:
         print("Correct!")
-        print("-----------------------------------------------------------------------------")
     else:   
-        print("Incorrect! The correct answer was:", digit)
-        print("-----------------------------------------------------------------------------")
+        print("Incorrect! The correct answer is:", digit)
 
 
 
@@ -52,44 +48,34 @@ def Word_Scramble():
     
    jumbled_word = ''.join(jumbled_word)
     
+   print('These mixed up letters have potential of revealing some information...')
    print("Jumbled word : ", jumbled_word)
     
-   ans = input("Your answer : ")
+   ans = input("Your answer: ")
     
-   if ans == word:
+   if ans.lower() == word.lower():
       print("Correct!")
-      print("-----------------------------------------------------------------------------")
 
    else:
-      print("Incorrect! the correct answer was:", word)
-      print("-----------------------------------------------------------------------------")
+      print("Incorrect! the correct answer is:", word)
 
 
 
 
 def Caesar_Cipher(): 
     result = []
-    no = random.randint(1,2)
-    randomword= random.choice(words)
+    no = random.randint(1,3)
+    randomword= random.choice(words).lower()
     for char in randomword:         
         next_char = chr(ord(char) + no) 
         result.append(next_char) 
     
     print(''.join(result))
-    
-    answer = input("enter:")
+    print('This message was encripted with some kind of Cipher code, it could be related to the Assassin.')
+    answer = input("Enter the decoded word:")
 
-    if answer==randomword:
+    if answer.lower()==randomword.lower():
         print("Correct!!!")
-        print("-----------------------------------------------------------------------------")
 
     else:
-        print("Incorrect! The correct answer was:", randomword)
-        print("-----------------------------------------------------------------------------")
-
-
-
-
-#Number_Guessing()
-#Word_Scramble()
-#Caesar_Cipher()
+        print("Incorrect! The correct answer is:", randomword)
