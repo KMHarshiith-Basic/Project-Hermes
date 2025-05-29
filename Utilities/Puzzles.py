@@ -90,6 +90,6 @@ def Caesar_Cipher():
 
 
 
-Number_Guessing()
-Word_Scramble()
-Caesar_Cipher()
+#Number_Guessing()
+#Word_Scramble()
+#Caesar_Cipher()
