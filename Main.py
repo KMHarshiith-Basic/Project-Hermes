@@ -21,19 +21,19 @@ def start():
     print(Fore.YELLOW + "You are now in the CyberHunt world!".center(60))
     print(Fore.CYAN + "We have these misterious codes, crack them, and find the Cyber Assassin!".center(60))
 
-    A=list(Puzzles.jumble_words())  # Start the first puzzle
+    A=list(Puzzles.Word_Scramble())  # Start the first puzzle
     UserInfo.result(A)  # Store the result of the first puzzle
     print(Fore.GREEN + "Puzzle 1 completed!".center(60))
     print(Fore.YELLOW + "Now, let's see if you can beat the bot in the next challenge.".center(60))
     time.sleep(2)  # Simulate a delay before the next challenge
 
-    B=list(Puzzles.hint_converter())  # Start the second puzzle
+    B=list(Puzzles.Number_Guessing())  # Start the second puzzle
     UserInfo.result(B)  # Store the result of the second puzzle
     print(Fore.GREEN + "Puzzle 2 completed!".center(60))
     print(Fore.YELLOW + "Now, you are ready to find the Cyber Assassin!".center(60))
     time.sleep(2)  # Simulate a delay before the final challenge
 
-    C=list(Puzzles.find_the_word())  # Start the third puzzle
+    C=list(Puzzles.Caesar_Cipher())  # Start the third puzzle
     UserInfo.result(C)  # Store the result of the third puzzle
     print(Fore.GREEN + "Puzzle 3 completed!".center(60))
     print(Fore.YELLOW + "We have found some information about the Cyber Assassin!".center(60))

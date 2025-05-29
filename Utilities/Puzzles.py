@@ -1,15 +1,14 @@
 import random
 
+# For the word scramble and Caesar cipher puzzles, we will use the NLTK library to get a list of words.
 import nltk
 from nltk.corpus import words
 
-# Download the word list if not already downloaded
+
 nltk.download('words')
 
-# Get the list of English words from nltk
 word_list = words.words()
 
-# Shuffle and pick 500 random words (or change to any number you like)
 words = random.sample(word_list, 100)
 
 hints = ['no of corners of circle', 'beggining', 'the only even prime','triangle','the only number spelled with same no of letters as its value',
@@ -17,7 +16,7 @@ hints = ['no of corners of circle', 'beggining', 'the only even prime','triangle
 
 print("-----------------------------------------------------------------------------")
 
-def hint_converter():
+def Number_Guessing():
 
     print("Find the number.")
     print("Here are your hints for the digits:")
@@ -44,7 +43,7 @@ def hint_converter():
 
 
 
-def jumble_words():
+def Word_Scramble():
     
    word = random.choice(words)
 
@@ -68,7 +67,7 @@ def jumble_words():
 
 
 
-def find_the_word(): 
+def Caesar_Cipher(): 
     result = []
     no = random.randint(1,2)
     randomword= random.choice(words)
@@ -91,6 +90,6 @@ def find_the_word():
 
 
 
-hint_converter()
-jumble_words()
-find_the_word()
+Number_Guessing()
+Word_Scramble()
+Caesar_Cipher()
