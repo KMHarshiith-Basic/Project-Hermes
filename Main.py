@@ -60,7 +60,7 @@ def new_player():
             input("Press Enter to try again...")
             new_player()
         if Try==1:
-            print('Try loging in instead')
+            print('Try logging in instead')
             input('Press enter to return to previous page')
             go()
     elif name == '':
@@ -74,7 +74,7 @@ def new_player():
             print(Fore.GREEN + f"Welcome {name}, let's start the game!")
             print('Your username: ' + Fore.GREEN + name, 'Your ID: ' + Fore.GREEN + str(UserInfo.id(name)))
             input("Press Enter to continue...")
-            start()
+            start(UserInfo.id(name))
         else:
             print(Fore.RED + "Username not set, please try again.")
             new_player()
@@ -126,11 +126,11 @@ def welcome_screen(a=1):
         go()  # Game start function
     elif choice == '2':
         b=0
-        print(Fore.YELLOW + "\nInstructions: Solve puzzles, Beat the bot, Find the Cyber Assasin".center(width))
+        print(Fore.YELLOW + "\nInstructions: Solve puzzles, Beat the bot, Find the Cyber Assassin".center(width))
         input("\nPress Enter to return to menu.".center(width))
         welcome_screen(b)
     elif choice == '4':
-        print(Fore.RED + "\nQuiting the experience...")
+        print(Fore.RED + "\nQuitting the experience...")
         time.sleep(random.random()*2+1.5)  # Simulate a delay for dramatic effect
         print(Fore.CYAN + "Closing the game...")
         time.sleep(random.random()*2)
