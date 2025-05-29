@@ -1,5 +1,5 @@
 import random
-from Bot import AI_Bot
+from Utilities.Bot import AI_Bot
 # For the word scramble and Caesar cipher puzzles, we will use the NLTK library to get a list of words.
 import nltk
 from nltk.corpus import words
@@ -71,7 +71,7 @@ def Caesar_Cipher():
         result.append(next_char) 
     
     print(''.join(result))
-    print('This message was encripted with some kind of Cipher code, it could be related to the Assassin.')
+    print('This message was encripted with some kind of Cipher code, it could be related to the Assassin.(abcdefghijklmnopqrstuvwxyz)')
     answer = input("Enter the decoded word:")
 
     if answer.lower()==randomword.lower():
@@ -79,3 +79,7 @@ def Caesar_Cipher():
 
     else:
         print("Incorrect! The correct answer is:", randomword)
+
+        [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+        (((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))
+        {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}

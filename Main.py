@@ -21,7 +21,7 @@ def start(I):
     print(Fore.YELLOW + "You are now in the CyberHunt world!".center(60))
     print(Fore.CYAN + "We have these misterious codes, crack them, and find the Cyber Assassin!".center(60))
 
-    #A=list(Puzzles.Word_Scramble())  # Start the first puzzle
+    #A=list(Puzzles.Word_Scramble(I))  # Start the first puzzle
     #UserInfo.result1(I,A[0],A[1])  # Store the result of the first puzzle
     Puzzles.Word_Scramble()  # Start the first puzzle
     utils.print_border()
@@ -29,7 +29,7 @@ def start(I):
     print(Fore.YELLOW + "Now, let's see if you can beat the bot in the next challenge.".center(60))
     time.sleep(2)  # Simulate a delay before the next challenge
 
-    #B=list(Puzzles.Number_Guessing())  # Start the second puzzle
+    #B=list(Puzzles.Number_Guessing(I))  # Start the second puzzle
     #UserInfo.result2(I,B[0],B[1])  # Store the result of the second puzzle
     Puzzles.Number_Guessing()  # Start the second puzzle
     utils.print_border()
@@ -37,14 +37,14 @@ def start(I):
     print(Fore.YELLOW + "Now, you are ready to find the Cyber Assassin!".center(60))
     time.sleep(2)  # Simulate a delay before the final challenge
 
-    #C=list(Puzzles.Caesar_Cipher())  # Start the third puzzle
+    #C=list(Puzzles.Caesar_Cipher(I))  # Start the third puzzle
     #UserInfo.result3(I,C[0],C[1])  # Store the result of the third puzzle
     Puzzles.Caesar_Cipher()  # Start the third puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 3 completed!".center(60))
     name = UserInfo.get_data(I)
     print(Fore.YELLOW + f"We have found some information about the Cyber Assassin {name[1]}!".center(60))
-    utils.thill()
+    utils.thrill()
 
 def end():
     input("Press Enter to play again...")
