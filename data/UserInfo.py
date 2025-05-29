@@ -1,6 +1,8 @@
 import sqlite3
+import os
 
-ud = sqlite3.connect('data/UserData.db')
+db_path = os.path.join(os.path.dirname(__file__), 'UserData.db')
+ud = sqlite3.connect(db_path)
 c = ud.cursor()
 
 # Use parameterized queries correctly
