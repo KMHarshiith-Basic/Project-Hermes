@@ -1,12 +1,12 @@
 import random
-
+from Bot import AI_Bot
 # For the word scramble and Caesar cipher puzzles, we will use the NLTK library to get a list of words.
 import nltk
 from nltk.corpus import words
 
 
 nltk.download('words')
-
+bot = AI_Bot.MiniMind([])
 word_list = words.words()
 
 words = random.sample(word_list, 100)
