@@ -12,8 +12,8 @@ word_list = words.words()
 # Shuffle and pick 500 random words (or change to any number you like)
 words = random.sample(word_list, 100)
 
-hints = ['no of corners of circle', 'beggining', 'the only even prime','trianle','the only number spelled with same no of letters as its value',
-           'no of rings in olympics flag','sides of cube','thala for a reason','no of planets in solar system','atomic number of fluorine',]
+hints = ['no of corners of circle', 'beggining', 'the only even prime','triangle','the only number spelled with same no of letters as its value',
+           'no of rings in olympics flag','faces of cube','thala for a reason','no of planets in solar system','atomic number of fluorine',]
 
 print("-----------------------------------------------------------------------------")
 
