@@ -1,10 +1,16 @@
 import random
 
-words = ['apple', 'banana', 'cat', 'dog', 'elephant', 'fish',
-         'grape', 'hat', 'igloo', 'jacket', 'kite', 'lemon',
-         'monkey', 'notebook', 'orange', 'penguin', 'quilt',
-         'rabbit', 'snake', 'tiger', 'umbrella', 'violin',
-         'whale', 'xylophone', 'yacht', 'zebra']
+import nltk
+from nltk.corpus import words
+
+# Download the word list if not already downloaded
+nltk.download('words')
+
+# Get the list of English words from nltk
+word_list = words.words()
+
+# Shuffle and pick 500 random words (or change to any number you like)
+words = random.sample(word_list, 100)
 
 hints = ['no of corners of circle', 'beggining', 'the only even prime','trianle','the only number spelled with same no of letters as its value',
            'no of rings in olympics flag','sides of cube','thala for a reason','no of planets in solar system','atomic number of fluorine',]
@@ -85,8 +91,6 @@ def find_the_word():
 
 
 
-if __name__ == "__main__":
-
-    hint_converter()
-    jumble_words()
-    find_the_word()
+hint_converter()
+jumble_words()
+find_the_word()
