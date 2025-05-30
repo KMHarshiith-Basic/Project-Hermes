@@ -21,7 +21,7 @@ def Number_Guessing():
         x = digilist[i]
         print(str(i+1)+'. '+hints[x][random_no])
 
-    ans = int(input("Enter the digit: "))
+    ans = int(input("Enter the number: "))
 
     if ans == digit:
         print("Correct!")
