@@ -29,7 +29,7 @@ def get_data(I):  # Get player data
     return result if result else None
 
 def get_ratings(I): # Get player ratings
-    c.execute('SELECT id, Rating1, Rating2, Rating3 FROM players WHERE id = ?', (I,))
+    c.execute('SELECT id, Rating1, Rating2, Rating3, BossRating FROM players WHERE id = ?', (I,))
     result = c.fetchone()  
     return result if result else None
 

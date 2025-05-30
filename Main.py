@@ -1,13 +1,17 @@
 import pyfiglet
 import time
 import random
+from Utilities import Fun_GUI
 from data import UserInfo
 from Utilities import Puzzles
 from Utilities import utils
+from Utilities.Bot import AI_Bot
 from colorama import Fore, Style, init
 init(autoreset=True)
 
 title = pyfiglet.figlet_format("CyberHunt Lite", font="slant")
+bot = AI_Bot.MiniMind()
+b=1
 
 # Game start function and logics
 def start(I):
@@ -15,41 +19,62 @@ def start(I):
     print(Fore.MAGENTA + title)
     utils.print_border(60)
     print(Fore.GREEN + "Game Loading...".center(60))
+    R = UserInfo.get_ratings(I)
     utils.print_border(60)
 
     time.sleep(2)  # Simulate game start delay
     print(Fore.YELLOW + "You are now in the CyberHunt world!".center(60))
     print(Fore.CYAN + "We have these misterious codes, crack them, and find the Cyber Assassin!".center(60))
 
-    #A=list(Puzzles.Word_Scramble(I))  # Start the first puzzle
-    #UserInfo.result1(I,A[0],A[1])  # Store the result of the first puzzle
-    Puzzles.Word_Scramble()  # Start the first puzzle
+    A=list(Puzzles.Word_Scramble(I),bot.solve_scramble(R[1]))  # Start the first puzzle
+    UserInfo.result1(I,A[0],A[1])  # Store the result of the first puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 1 completed!".center(60))
     print(Fore.YELLOW + "Now, let's see if you can beat the bot in the next challenge.".center(60))
     time.sleep(2)  # Simulate a delay before the next challenge
 
-    #B=list(Puzzles.Number_Guessing(I))  # Start the second puzzle
-    #UserInfo.result2(I,B[0],B[1])  # Store the result of the second puzzle
-    Puzzles.Number_Guessing()  # Start the second puzzle
+    B=list(Puzzles.Number_Guessing(I),bot.solve_number_guess(R[2]))  # Start the second puzzle
+    UserInfo.result2(I,B[0],B[1])  # Store the result of the second puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 2 completed!".center(60))
     print(Fore.YELLOW + "Now, you are ready to find the Cyber Assassin!".center(60))
     time.sleep(2)  # Simulate a delay before the final challenge
 
-    #C=list(Puzzles.Caesar_Cipher(I))  # Start the third puzzle
-    #UserInfo.result3(I,C[0],C[1])  # Store the result of the third puzzle
-    Puzzles.Caesar_Cipher()  # Start the third puzzle
+    C=list(Puzzles.Caesar_Cipher(I),bot.solve_caesar(R[3]))  # Start the third puzzle
+    UserInfo.result3(I,C[0],C[1])  # Store the result of the third puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 3 completed!".center(60))
     name = UserInfo.get_data(I)
     print(Fore.YELLOW + f"We have found some information about the Cyber Assassin {name[1]}!".center(60))
     utils.thrill()
+    print('Location of the Cyber Assassin cracked...')
+    print('Be QUICK to catch him.')
+    D=UserInfo.get_data(I)
+    B=Fun_GUI.Boss(R[4])
+    if B == 1:
+        print(f"Don't worry {D[1]}, let's defeat the Assassin in our next trial together")
+        input('Press Enter to continue...')
+    elif B == 0:
+        print("Congrats, we made it...")
+        input('Press Enter to continue...')
 
 def end():
-    input("Press Enter to play again...")
-    b=1  # Reset welcome screen flag
-    welcome_screen()
+    global b
+    utils.clear_screen()
+    width = 35
+    #utils.print_border(width+65)
+    print(Fore.GREEN + title)
+    utils.print_border(width+65)
+    end = input("Press Enter to play again (or) Q to quit...")
+    if end == 'Q' or end == 'q':
+        print(Fore.RED + "\nQuitting the experience...")
+        time.sleep(random.random()*2+1.5)  # Simulate a delay for dramatic effect
+        print(Fore.CYAN + "Closing the game...")
+        time.sleep(random.random()*2)
+        utils.print_border(width+65)
+    else:
+        b = 1
+        welcome_screen(b)
 
 def new_player():
     Try=0
@@ -102,7 +127,6 @@ def go():
         input("Press Enter to continue...")
         go()
 
-b=1
 #welcome screen
 def welcome_screen(a=1):
     global b

@@ -5,7 +5,6 @@ import nltk
 from nltk.corpus import words
 
 nltk.download('words')
-bot = AI_Bot.MiniMind([])
 word_list = words.words()
 
 words = random.sample(word_list, 100)

@@ -1,7 +1,7 @@
 import random
 
 class MiniMind:
-    def __init__(self, word_list):
+    def __init__(self):
         self.sarcasm_bank = [
         "Oh, you're *still* trying? Cute.",     # Add more sarcastic responses
         "Wow, a real brain teaser! Not.",
