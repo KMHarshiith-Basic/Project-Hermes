@@ -26,9 +26,11 @@ def Number_Guessing():
     if ans == digit:
         print("Correct!")
         print("-----------------------------------------------------------------------------")
+        return 1
     else:   
         print("Incorrect! The correct answer was:", digit)
         print("-----------------------------------------------------------------------------")
+        return 0
 
 
 
@@ -49,10 +51,11 @@ def Word_Scramble():
    if ans == word:
       print("Correct!")
       print("-----------------------------------------------------------------------------")
-
+      return 1
    else:
       print("Incorrect! the correct answer was:", word)
       print("-----------------------------------------------------------------------------")
+      return 0
 
 
 
@@ -72,10 +75,11 @@ def Caesar_Cipher():
     if answer==randomword:
         print("Correct!!!")
         print("-----------------------------------------------------------------------------")
-
+        return 1
     else:
         print("Incorrect! The correct answer was:", randomword)
         print("-----------------------------------------------------------------------------")
+        return 0
 
 
 
