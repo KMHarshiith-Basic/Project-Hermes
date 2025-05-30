@@ -54,9 +54,11 @@ def start(I):
     if B == 1:
         print(f"Don't worry {D[1]}, let's defeat the Assassin in our next trial together")
         input('Press Enter to continue...')
+        end()
     elif B == 0:
         print("Congrats, we made it...")
         input('Press Enter to continue...')
+        end()
 
 def end():
     global b
