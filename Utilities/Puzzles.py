@@ -1,20 +1,12 @@
 import random
-from Utilities.Bot import AI_Bot
-# For the word scramble and Caesar cipher puzzles, we will use the NLTK library to get a list of words.
-import nltk
-from nltk.corpus import words
+from wordlist import words
+from hints import hints
 
-nltk.download('words')
-word_list = words.words()
-
-words = random.sample(word_list, 100)
-
-hints = ['Number of corners of circle', 'The Beggining', 'The only even prime','Triangle','The only number spelled with same number of letters as its value',
-           'Number of rings in olympics flag','Number of faces of a cube','Thala for a reason','Number of planets in solar system','Atomic number of fluorine',]
+print("-----------------------------------------------------------------------------")
 
 def Number_Guessing():
 
-    print("We have some clues about the IP address of the Assassin.")
+    print("Find the number.")
     print("Here are your hints for the digits:")
 
     global hints
@@ -22,17 +14,21 @@ def Number_Guessing():
     digit = random.randint(100, 1000000)
 
     digilist = [int(d) for d in str(digit)]
+    
+    random_no = random.randint(0,3)
 
     for i in range(0,len(digilist)):
         x = digilist[i]
-        print(str(i+1)+'. '+hints[x])
+        print(str(i+1)+'. '+hints[x][random_no])
 
-    ans = int(input("Enter the Number: "))
+    ans = int(input("Enter the digit: "))
 
     if ans == digit:
         print("Correct!")
+        print("-----------------------------------------------------------------------------")
     else:   
-        print("Incorrect! The correct answer is:", digit)
+        print("Incorrect! The correct answer was:", digit)
+        print("-----------------------------------------------------------------------------")
 
 
 
@@ -46,34 +42,44 @@ def Word_Scramble():
     
    jumbled_word = ''.join(jumbled_word)
     
-   print('These mixed up letters have potential of revealing some information...')
    print("Jumbled word : ", jumbled_word)
     
-   ans = input("Your answer: ")
+   ans = input("Your answer : ")
     
-   if ans.lower() == word.lower():
+   if ans == word:
       print("Correct!")
+      print("-----------------------------------------------------------------------------")
 
    else:
-      print("Incorrect! the correct answer is:", word)
+      print("Incorrect! the correct answer was:", word)
+      print("-----------------------------------------------------------------------------")
 
 
 
 
 def Caesar_Cipher(): 
     result = []
-    no = random.randint(1,3)
-    randomword= random.choice(words).lower()
+    no = random.randint(1,2)
+    randomword= random.choice(words)
     for char in randomword:         
         next_char = chr(ord(char) + no) 
         result.append(next_char) 
     
     print(''.join(result))
-    print('This message was encrypted with some kind of Cipher code, it could be related to the Assassin.(abcdefghijklmnopqrstuvwxyz)')
-    answer = input("Enter the decoded word:")
+    
+    answer = input("enter:")
 
-    if answer.lower()==randomword.lower():
+    if answer==randomword:
         print("Correct!!!")
+        print("-----------------------------------------------------------------------------")
 
     else:
-        print("Incorrect! The correct answer is:", randomword)
+        print("Incorrect! The correct answer was:", randomword)
+        print("-----------------------------------------------------------------------------")
+
+
+
+
+#Number_Guessing()
+#Word_Scramble()
+#Caesar_Cipher()
