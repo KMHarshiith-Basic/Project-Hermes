@@ -17,17 +17,17 @@ class MiniMind:
 
 # Adjust the percentage automatically based on the user's performance
 
-    def solve_caesar(self):
+    def solve_caesar(self,r):
         result = 1 if random.random() < 0.5 else 0
         sarcasm = random.choice(self.sarcasm_bank)
         return result, sarcasm
 
-    def solve_scramble(self):
+    def solve_scramble(self,r):
         result = 1 if random.random() < 0.5 else 0
         sarcasm = random.choice(self.sarcasm_bank)
         return result, sarcasm
-    
-    def solve_number_guess(self):
+
+    def solve_number_guess(self,r):
         result = 1 if random.random() < 0.5 else 0
         sarcasm = random.choice(self.sarcasm_bank)
         return result, sarcasm

@@ -1,12 +1,13 @@
 import random
-from wordlist import words
-from hints import hints
+from Utilities import wordlist
+from Utilities import hints
 
-print("-----------------------------------------------------------------------------")
+words = wordlist.get_words()
+hints = hints.get_hints()
 
-def Number_Guessing():
+def Number_Guessing(r):
 
-    print("Find the number.")
+    print("Node IP: 192.168.X.?? – Resolve the missing digits.")
     print("Here are your hints for the digits:")
 
     global hints
@@ -15,70 +16,59 @@ def Number_Guessing():
 
     digilist = [int(d) for d in str(digit)]
     
-    random_no = random.randint(0,3)
+    random_no = random.randint(0,2)
 
     for i in range(0,len(digilist)):
         x = digilist[i]
         print(str(i+1)+'. '+hints[x][random_no])
 
-    ans = int(input("Enter the number: "))
+    ans = input("Enter the number: ")
 
-    if ans == digit:
+    if ans.strip() == str(digit).strip():
         print("Correct!")
-        print("-----------------------------------------------------------------------------")
         return 1
     else:   
         print("Incorrect! The correct answer was:", digit)
-        print("-----------------------------------------------------------------------------")
         return 0
 
-
-
-
-def Word_Scramble():
-    
+def Word_Scramble(r):
+   global words
    word = random.choice(words)
 
    jumbled_word = list(word)
    random.shuffle(jumbled_word)
     
    jumbled_word = ''.join(jumbled_word)
-    
+   print('Someone jammed this text — unscramble before it’s lost.') 
    print("Jumbled word : ", jumbled_word)
     
    ans = input("Your answer : ")
     
    if ans == word:
       print("Correct!")
-      print("-----------------------------------------------------------------------------")
       return 1
    else:
       print("Incorrect! the correct answer was:", word)
-      print("-----------------------------------------------------------------------------")
       return 0
 
-
-
-
-def Caesar_Cipher(): 
+def Caesar_Cipher(r): 
+    global words
     result = []
     no = random.randint(1,2)
     randomword= random.choice(words)
     for char in randomword:         
         next_char = chr(ord(char) + no) 
         result.append(next_char) 
+    print('Incoming encrypted message intercepted. Decoding key unknown.')
+    print('Encrypted message:', ''.join(result))
     
-    print(''.join(result))
-    
-    answer = input("enter:")
+    answer = input("Enter the Decode:")
 
     if answer==randomword:
         print("Correct!!!")
-        print("-----------------------------------------------------------------------------")
         return 1
     else:
         print("Incorrect! The correct answer was:", randomword)
-        print("-----------------------------------------------------------------------------")
         return 0
 
 

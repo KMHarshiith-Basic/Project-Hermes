@@ -8,16 +8,6 @@ import pygame
 sys.stdout.close()
 sys.stdout = original_stdout
 
-# Loading Images
-pygame.display.set_mode((800, 600), pygame.HWSURFACE | pygame.DOUBLEBUF)
-
-player_img = pygame.image.load("Utilities/player.png").convert_alpha()
-player_img = pygame.transform.scale(player_img, (74.8, 33.4)).convert_alpha()
-
-boss_img = pygame.image.load("Utilities/boss.png").convert_alpha()
-boss_img = pygame.transform.scale(boss_img, (205.7, 52.9)).convert_alpha()
-boss_img.set_colorkey((255, 255, 255))  # RGB for white
-
 def Boss(A):
     pygame.init()
 
@@ -25,6 +15,14 @@ def Boss(A):
     WIDTH, HEIGHT = 800, 600
     win = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("AI_Bot: Final Override")
+
+    # Loading Images
+    player_img = pygame.image.load("Utilities/player.png").convert_alpha()
+    player_img = pygame.transform.scale(player_img, (75, 33)).convert_alpha()
+
+    boss_img = pygame.image.load("Utilities/boss.png").convert_alpha()
+    boss_img = pygame.transform.scale(boss_img, (206, 53)).convert_alpha()
+    boss_img.set_colorkey((255, 255, 255))  # RGB for white
 
     a = (2500-A)//100  # Adjust the frequency of enemy bullets based on the difficulty level
     # Colors
@@ -37,11 +35,11 @@ def Boss(A):
     clock = pygame.time.Clock()
 
     # Player settings
-    player = pygame.Rect(370, 500, 74.8, 33.4)
+    player = pygame.Rect(370, 500, 75, 33)
     player_speed = 7
 
     # Boss settings
-    boss = pygame.Rect(300, 50, 205.7, 52.9)
+    boss = pygame.Rect(300, 50, 206, 53)
     boss_health = 30
 
     # Bullets (logic blasts)
@@ -107,10 +105,14 @@ def Boss(A):
         if boss_health <= 0:
             print("YOU WIN! The Cyber Assassin was taken down.")
             running = False
+            pygame.quit()
+            sys.exit()
             return 0
         if player_health <= 0:
             print("YOU LOSE! The Assassin Escaped.")
             running = False
+            pygame.quit()
+            sys.exit()
             return 1
 
         pygame.display.update()
