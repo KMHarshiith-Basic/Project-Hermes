@@ -46,7 +46,7 @@ def result1(I,u,b):
         elif u==0 and b==1:
             c.execute('UPDATE players SET Rating1 = ? WHERE id = ?', (r-10,I))
             ud.commit()
-        elif u==0 and b==0:
+        else:
             pass # Does not change anything
     else:
         c.execute('UPDATE players SET Rating1 = ? WHERE id = ?', (2000,I))
@@ -64,7 +64,7 @@ def result2(I,u,b):
         elif u==0 and b==1:
             c.execute('UPDATE players SET Rating2 = ? WHERE id = ?', (r-10,I))
             ud.commit()
-        elif u==0 and b==0:
+        else:
             pass # Does not change anything
     else:
         c.execute('UPDATE players SET Rating2 = ? WHERE id = ?', (2000,I))
@@ -82,7 +82,7 @@ def result3(I,u,b):
         elif u==0 and b==1:
             c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (r-10,I))
             ud.commit()
-        elif u==0 and b==0:
+        else:
             pass # Does not change anything
     elif r>=2000:
         c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (2000,I))
