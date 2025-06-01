@@ -115,5 +115,3 @@ def Boss(A):
             return 1
 
         pygame.display.update()
-
-#Boss(500)  # Example difficulty level, can be adjusted

@@ -70,7 +70,3 @@ def Caesar_Cipher(r):
     else:
         print("Incorrect! The correct answer was:", randomword)
         return 0
-
-#Number_Guessing()
-#Word_Scramble()
-#Caesar_Cipher()

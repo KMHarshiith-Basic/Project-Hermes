@@ -5,7 +5,6 @@ db_path = os.path.join(os.path.dirname(__file__), 'UserData.db')
 ud = sqlite3.connect(db_path)
 c = ud.cursor()
 
-# Use parameterized queries correctly
 def new(n):
     c.execute('INSERT INTO players (username) VALUES (?)', (n,))
     ud.commit()

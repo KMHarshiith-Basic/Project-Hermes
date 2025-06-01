@@ -32,7 +32,7 @@ def thrill():
     import time
     import random
     sounds = ["Beep...", "Bzzz...", "Ding!", "Ping!", "Buzz..."]
-    music = "sounds/beep.wav"
+    music = "Sounds/beep.wav"
     pygame.init()
     pygame.mixer.init()
     pygame.mixer.music.load(music)
