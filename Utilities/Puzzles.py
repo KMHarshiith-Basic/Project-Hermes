@@ -42,7 +42,7 @@ def Word_Scramble(r):
    print('Someone jammed this text — unscramble before it’s lost.') 
    print("Jumbled word : ", jumbled_word)
     
-   ans = input("Your answer : ")
+   ans = input("Your answer : ").strip()
     
    if ans == word:
       print("Correct!")
@@ -55,24 +55,21 @@ def Caesar_Cipher(r):
     global words
     result = []
     no = random.randint(1,2)
-    randomword= random.choice(words)
+    randomword= random.choice(words).lower()
     for char in randomword:         
-        next_char = chr(ord(char) + no) 
+        next_char = chr((ord(char) - ord('a') + no) % 26 + ord('a'))
         result.append(next_char) 
     print('Incoming encrypted message intercepted. Decoding key unknown.')
     print('Encrypted message:', ''.join(result))
     
-    answer = input("Enter the Decode:")
+    answer = input("Enter the Decode:").strip()
 
-    if answer==randomword:
+    if answer.lower()==randomword:
         print("Correct!!!")
         return 1
     else:
         print("Incorrect! The correct answer was:", randomword)
         return 0
-
-
-
 
 #Number_Guessing()
 #Word_Scramble()
