@@ -38,6 +38,7 @@ def start(I):
     print(Fore.GREEN + "Puzzle 2 completed!".center(60))
     print(Fore.YELLOW + "Now, you are ready to find the Cyber Assassin!".center(60))
     time.sleep(2)  # Simulate a delay before the final challenge
+    print('This might be usefull to you: abcdefghijklmnopqrstuvwxyz')
 
     C=[Puzzles.Caesar_Cipher(R[3]),bot.solve_caesar(R[3])]  # Start the third puzzle
     UserInfo.result3(I,C[0],C[1])  # Store the result of the third puzzle
