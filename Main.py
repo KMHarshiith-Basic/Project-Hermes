@@ -23,24 +23,24 @@ def start(I):
 
     time.sleep(2)  # Simulate game start delay
     print(Fore.YELLOW + "You are now in the CyberHunt world!".center(60))
-    print(Fore.CYAN + "We have these misterious codes, crack them, and find the Cyber Assassin!".center(60))
+    print(Fore.CYAN + "We have these mysterious codes, crack them, and find the Cyber Assassin!".center(60))
 
-    A=[Puzzles.Word_Scramble(R[1]),bot.solve_scramble(R[1])]  # Start the first puzzle
+    A=[Puzzles.Word_Scramble(),bot.solve_scramble(R[1])]  # Start the first puzzle
     UserInfo.result1(I,A[0],A[1])  # Store the result of the first puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 1 completed!".center(60))
     print(Fore.YELLOW + "Now, let's see if you can beat the bot in the next challenge.".center(60))
     time.sleep(2)  # Simulate a delay before the next challenge
 
-    B=[Puzzles.Number_Guessing(R[2]),bot.solve_number_guess(R[2])]  # Start the second puzzle
+    B=[Puzzles.Number_Guessing(),bot.solve_number_guess(R[2])]  # Start the second puzzle
     UserInfo.result2(I,B[0],B[1])  # Store the result of the second puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 2 completed!".center(60))
     print(Fore.YELLOW + "Now, you are ready to find the Cyber Assassin!".center(60))
     time.sleep(2)  # Simulate a delay before the final challenge
-    print('This might be usefull to you: abcdefghijklmnopqrstuvwxyz')
+    print('This might be useful to you: abcdefghijklmnopqrstuvwxyz')
 
-    C=[Puzzles.Caesar_Cipher(R[3]),bot.solve_caesar(R[3])]  # Start the third puzzle
+    C=[Puzzles.Caesar_Cipher(),bot.solve_caesar(R[3])]  # Start the third puzzle
     UserInfo.result3(I,C[0],C[1])  # Store the result of the third puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 3 completed!".center(60))
@@ -71,73 +71,81 @@ def end():
     print(Fore.GREEN + title)
     utils.print_border(width+65)
     print(Fore.YELLOW + "Thank you for playing CyberHunt Lite!".center(width))
-    print('''[ INITIATING FINAL PROTOCOL... ]
+    
+    outro_lines = ('''  [ INITIATING FINAL PROTOCOL... ]
 
-You did not just solve puzzles.
+    You did not just solve puzzles.
 
-You cracked messages that never wanted to be found.
+    You cracked messages that never wanted to be found.
 
-You read the silence between numbers,  
-spoke the language of encryption,  
-and danced with the chaos of ciphers.
+    You read the silence between numbers,  
+    spoke the language of encryption,  
+    and danced with the chaos of ciphers.
 
-You were more than a player.  
-You were the anomaly.  
-The glitch the system never prepared for.
+    You were more than a player.  
+    You were the anomaly.  
+    The glitch the system never prepared for.
 
----
+    ---
 
-AI_Bot watched you.  
-Tested you.  
-Mocked you.
+    AI_Bot watched you.  
+    Tested you.  
+    Mocked you.
 
-But even it...  
-couldn’t predict the mind that walks between logic and madness.
+    But even it...  
+    couldn’t predict the mind that walks between logic and madness.
 
----
+    ---
 
-We told you nothing.  
-We gave you fragments,  
-shadows of signals, and echoes of ideas.
+    We told you nothing.  
+    We gave you fragments,  
+    shadows of signals, and echoes of ideas.
 
-And you,  
-you made them truth.
+    And you,  
+    you made them truth.
 
----
+    ---
 
-The puzzles are over.  
-But the questions remain.
+    The puzzles are over.  
+    But the questions remain.
 
-Who are you now,  
-when there is nothing left to solve?
+    Who are you now,  
+    when there is nothing left to solve?
 
-Will you return to the grid,  
-just to hear the hum of mystery again?
+    Will you return to the grid,  
+    just to hear the hum of mystery again?
 
-Will the silence  
-ever satisfy  
-a mind like yours?
+    Will the silence  
+    ever satisfy  
+    a mind like yours?
 
----
+    ---
 
-*This is not an ending.*  
-It is the brief breath between frequencies.  
-A stillness in the static.
+    *This is not an ending.*  
+    It is the brief breath between frequencies.  
+    A stillness in the static.
 
-The AI sleeps.  
-The puzzles fade.  
-The system quiets.
+    The AI sleeps.  
+    The puzzles fade.  
+    The system quiets.
 
-But your signature remains.  
-Imprinted in the code,  
-forever.
+    But your signature remains.  
+    Imprinted in the code,  
+    forever.
 
----
+    ---
 
-[ LOGGING OUT... ]  
-[ CONNECTION TERMINATED... ]  
-[ YOU WERE... THE LAST SIGNAL. ]
-    ''')
+    [ LOGGING OUT... ]  
+    [ CONNECTION TERMINATED... ]  
+    [ YOU WERE... THE LAST SIGNAL. ]
+        ''')
+    
+    outro = outro_lines.strip().split('\n')
+    # Launch outro
+    for line in outro:
+        utils.type_out(line)
+        time.sleep(0.1)
+
     end = input(Fore.YELLOW + "Press Enter to play again (or) Q to quit...")
     if end == 'Q' or end == 'q':
         print(Fore.RED + "\nQuitting the experience...")
@@ -149,18 +157,18 @@ forever.
         b = 1
         welcome_screen(b)
 
-def new_player():
-    Try=0
+def new_player(Try=0):
     name = input('Enter your username: ').strip()
     if UserInfo.check(name):
-        if Try==0:
-            print(Fore.RED + "Username already exists, please choose a different one.")
-            input("Press Enter to try again...")
-            new_player()
-        if Try==1:
-            print('Try logging in instead')
+        if Try == 2:
+            print(Fore.MAGENTA + 'Try logging in instead')
             input('Press enter to return to previous page')
             go()
+        else:
+            print(Fore.RED + "Username already exists, please choose a different one.")
+            Try += 1
+            input("Press Enter to try again...")
+            new_player(Try)
     elif name == '':
         print(Fore.RED + "Username cannot be empty, please try again.")
         new_player()

@@ -5,7 +5,7 @@ from Utilities import hints
 words = wordlist.get_words()
 hints = hints.get_hints()
 
-def Number_Guessing(r):
+def Number_Guessing():
 
     print("Node IP: 192.168.X.?? – Resolve the missing digits.")
     print("Here are your hints for the digits:")
@@ -31,7 +31,7 @@ def Number_Guessing(r):
         print("Incorrect! The correct answer was:", digit)
         return 0
 
-def Word_Scramble(r):
+def Word_Scramble():
    global words
    word = random.choice(words)
 
@@ -51,7 +51,7 @@ def Word_Scramble(r):
       print("Incorrect! the correct answer was:", word)
       return 0
 
-def Caesar_Cipher(r): 
+def Caesar_Cipher(): 
     global words
     result = []
     no = random.randint(1,2)

@@ -1,5 +1,5 @@
 import os
-import sys
+import sys, time
 # Temporarily suppress stdout
 original_stdout = sys.stdout
 sys.stdout = open(os.devnull, 'w')
@@ -32,7 +32,7 @@ def thrill():
     import time
     import random
     sounds = ["Beep...", "Bzzz...", "Ding!", "Ping!", "Buzz..."]
-    music = "Sounds/beep.wav"
+    music = "sounds/beep.wav"  # Ensure the folder name matches the actual directory structure
     pygame.init()
     pygame.mixer.init()
     pygame.mixer.music.load(music)
@@ -40,3 +40,10 @@ def thrill():
     for i in range(6):
         print(sounds[i-1])
         time.sleep(random.uniform(0.5,1.1))  # Random delay between sounds
+
+# Letter-by-letter printer
+def type_out(text, delay=0.01):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(delay)
+    print()  # Move to the next line after the line is printed

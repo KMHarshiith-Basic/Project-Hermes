@@ -35,7 +35,7 @@ def get_ratings(I): # Get player ratings
 def result1(I,u,b):
     R=get_ratings(I)
     r=R[1]
-    if r<2000:
+    if r<2000 and r>100:
         if u==1 and b==1:
             c.execute('UPDATE players SET Rating1 = ? WHERE id = ?', (r+20,I))
             ud.commit()
@@ -49,11 +49,12 @@ def result1(I,u,b):
             pass # Does not change anything
     else:
         c.execute('UPDATE players SET Rating1 = ? WHERE id = ?', (2000,I))
+        ud.commit()
 
 def result2(I,u,b):
     R=get_ratings(I)
     r=R[2]
-    if r<2000:
+    if r<2000 and r>100:
         if u==1 and b==1:
             c.execute('UPDATE players SET Rating2 = ? WHERE id = ?', (r+20,I))
             ud.commit()
@@ -66,7 +67,9 @@ def result2(I,u,b):
         else:
             pass # Does not change anything
     else:
+        # If rating is already at max, reset to 2000
         c.execute('UPDATE players SET Rating2 = ? WHERE id = ?', (2000,I))
+        ud.commit()
 
 def result3(I,u,b):
     R=get_ratings(I)
@@ -83,7 +86,6 @@ def result3(I,u,b):
             ud.commit()
         else:
             pass # Does not change anything
-    elif r>=2000:
-        c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (2000,I))
     else:
-        pass
+        c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (2000,I))
+        ud.commit()
