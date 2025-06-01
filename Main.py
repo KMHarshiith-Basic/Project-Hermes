@@ -144,7 +144,7 @@ def end():
     # Launch outro
     for line in outro:
         utils.type_out(line)
-        time.sleep(0.1)
+        time.sleep(0.15)
 
     end = input(Fore.YELLOW + "Press Enter to play again (or) Q to quit...")
     if end == 'Q' or end == 'q':

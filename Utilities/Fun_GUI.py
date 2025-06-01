@@ -17,6 +17,28 @@ def Boss(A):
     win = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("AI_Bot: Final Override")
 
+    # --- Start Screen ---
+    start_screen = True
+    button_rect = pygame.Rect(WIDTH//2 - 75, HEIGHT//2 - 30, 150, 60)
+    font = pygame.font.SysFont(None, 48)
+    while start_screen:
+        win.fill((0, 0, 0))  # Fill the screen with black
+        pygame.draw.rect(win, (0, 0, 255), button_rect)
+        text = font.render('START', True, (255, 255, 255))
+        win.blit(text, (button_rect.x + (button_rect.width - text.get_width())//2, button_rect.y + (button_rect.height - text.get_height())//2))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if button_rect.collidepoint(event.pos):
+                    start_screen = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
+                    start_screen = False
+    # --- End Start Screen ---
+
     # Loading Images
     player_img = pygame.image.load("Utilities/player.png").convert_alpha()
     player_img = pygame.transform.scale(player_img, (75, 33)).convert_alpha()
