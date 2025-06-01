@@ -48,6 +48,7 @@ def start(I):
     utils.thrill()
     print('Location of the Cyber Assassin cracked...')
     print('Be QUICK to catch him.')
+    input('Click on the window that opens, Enter to continue.')
     D=UserInfo.get_data(I)
     from Utilities import Fun_GUI
     B=Fun_GUI.Boss(R[4])

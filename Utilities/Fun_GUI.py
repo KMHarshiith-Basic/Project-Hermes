@@ -1,4 +1,4 @@
-import os, sys, random
+import os, sys, random, time
 
 # Temporarily suppress stdout
 original_stdout = sys.stdout
@@ -10,6 +10,7 @@ sys.stdout = original_stdout
 
 def Boss(A):
     pygame.init()
+    time.sleep(3)
 
     # Set up display
     WIDTH, HEIGHT = 800, 600
@@ -106,13 +107,11 @@ def Boss(A):
             print("YOU WIN! The Cyber Assassin was taken down.")
             running = False
             pygame.quit()
-            sys.exit()
             return 0
         if player_health <= 0:
             print("YOU LOSE! The Assassin Escaped.")
             running = False
             pygame.quit()
-            sys.exit()
             return 1
 
         pygame.display.update()
