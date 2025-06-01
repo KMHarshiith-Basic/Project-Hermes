@@ -1,8 +1,7 @@
 import random
 
 class MiniMind:
-    def __init__(self, word_list):
-        self.word_list = word_list
+    def __init__(self):
         self.sarcasm_bank = [
         "Oh, you're *still* trying? Cute.",     # Add more sarcastic responses
         "Wow, a real brain teaser! Not.",
@@ -18,17 +17,17 @@ class MiniMind:
 
 # Adjust the percentage automatically based on the user's performance
 
-    def solve_caesar(self, text):
-        result = "Solved" if random.random() < 0.5 else "Not solved"
+    def solve_caesar(self):
+        result = 1 if random.random() < 0.5 else 0
         sarcasm = random.choice(self.sarcasm_bank)
-        return f"{result} — {sarcasm}"
+        return result, sarcasm
 
-    def solve_scramble(self, scrambled):
-        result = "Solved" if random.random() < 0.5 else "Not solved"
+    def solve_scramble(self):
+        result = 1 if random.random() < 0.5 else 0
         sarcasm = random.choice(self.sarcasm_bank)
-        return f"{result} — {sarcasm}"
+        return result, sarcasm
     
-    def solve_number_guess(self, number_range):
-        result = "Solved" if random.random() < 0.5 else "Not solved"
+    def solve_number_guess(self):
+        result = 1 if random.random() < 0.5 else 0
         sarcasm = random.choice(self.sarcasm_bank)
-        return f"{result} — {sarcasm}"
+        return result, sarcasm
