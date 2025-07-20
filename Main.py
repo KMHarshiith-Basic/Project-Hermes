@@ -14,6 +14,7 @@ b=1
 
 # Game start function and logics
 def start(I):
+    UserInfo.played(I)
     utils.clear_screen()
     print(Fore.MAGENTA + title)
     utils.print_border(60)
@@ -25,14 +26,24 @@ def start(I):
     print(Fore.YELLOW + "You are now in the CyberHunt world!".center(60))
     print(Fore.CYAN + "We have these mysterious codes, crack them, and find the Cyber Assassin!".center(60))
 
-    A=[Puzzles.Word_Scramble(),bot.solve_scramble(R[1])]  # Start the first puzzle
+    P = bot.solve_scramble(R[1])
+    A=[Puzzles.Word_Scramble(I),P]  # Start the first puzzle
+    if P == 1:
+        print(Fore.YELLOW + 'Mini Mind Solved')
+    else:
+        print(Fore.YELLOW + 'Mini Mind Failed')
     UserInfo.result1(I,A[0],A[1])  # Store the result of the first puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 1 completed!".center(60))
     print(Fore.YELLOW + "Now, let's see if you can beat the bot in the next challenge.".center(60))
     time.sleep(2)  # Simulate a delay before the next challenge
 
-    B=[Puzzles.Number_Guessing(),bot.solve_number_guess(R[2])]  # Start the second puzzle
+    P = bot.solve_number_guess(R[2])
+    B=[Puzzles.Number_Guessing(I), P]  # Start the second puzzle
+    if P == 1:
+        print(Fore.YELLOW + 'Mini Mind Solved')
+    else:
+        print(Fore.YELLOW + 'Mini Mind Falied')
     UserInfo.result2(I,B[0],B[1])  # Store the result of the second puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 2 completed!".center(60))
@@ -40,7 +51,12 @@ def start(I):
     time.sleep(2)  # Simulate a delay before the final challenge
     print('This might be useful to you: abcdefghijklmnopqrstuvwxyz')
 
-    C=[Puzzles.Caesar_Cipher(),bot.solve_caesar(R[3])]  # Start the third puzzle
+    P = bot.solve_caesar(R[3])
+    C=[Puzzles.Caesar_Cipher(I), P]  # Start the third puzzle
+    if P == 1:
+        print(Fore.YELLOW + 'Mini Mind Solved')
+    else:
+        print(Fore.YELLOW + 'Mini Mind Falied')
     UserInfo.result3(I,C[0],C[1])  # Store the result of the third puzzle
     utils.print_border()
     print(Fore.GREEN + "Puzzle 3 completed!".center(60))
@@ -48,17 +64,27 @@ def start(I):
     print(Fore.YELLOW + f"We have found some information about the Cyber Assassin {name[1]}!".center(60))
     utils.thrill()
     print('Location of the Cyber Assassin cracked...')
-    print('Be QUICK to catch him.')
+    print(Fore.BLUE + 'Be QUICK to catch him.')
+    utils.print_border()
+    print(Fore.LIGHTRED_EX + 'Instructions:')
+    print('''Right Arrow ⇨ to move right
+    Left Arrow ⇦ to move left
+    Escape from the red bullets from the black ship of enemy
+    Press Space Bar ⇭ to shoot''')
     input('Click on the window that opens, Enter to continue.')
     D=UserInfo.get_data(I)
     from Utilities import Fun_GUI
     B=Fun_GUI.Boss(R[4])
     utils.print_border(60)
     if B == 1:
+        UserInfo.Boss(I, 1)
+        utils.print_border()
         print(f"Don't worry {D[1]}, let's defeat the Assassin in our next trial together")
         input('Press Enter to continue...')
         end()
     elif B == 0:
+        UserInfo.Boss(I, 0)
+        utils.print_border()
         print("Congrats, we made it...")
         input('Press Enter to continue...')
         end()
@@ -146,6 +172,7 @@ def end():
         utils.type_out(line)
         time.sleep(0.15)
 
+    print('☺')
     end = input(Fore.YELLOW + "Press Enter to play again (or) Q to quit...")
     if end == 'Q' or end == 'q':
         print(Fore.RED + "\nQuitting the experience...")
@@ -196,9 +223,20 @@ def go():
     elif choice == '2':
         name = input('Enter your username: ')
         if UserInfo.check(name):
-            print(Fore.GREEN + f"Welcome back {name}, let's continue the game!")
-            time.sleep(2)
-            start(UserInfo.id(name))
+            if UserInfo.id(name) == 1:
+                PASS = int(input('Enter passcode: '))
+                if PASS == 13579:
+                    print(Fore.GREEN + f"Welcome back {name}, let's continue the game!")
+                    time.sleep(2)
+                    start(UserInfo.id(name))
+                else:
+                    print(Fore.RED + 'Wrong passcode, Access Denied.')
+                    time.sleep(1.5)
+                    go()
+            else:
+                print(Fore.GREEN + f"Welcome back {name}, let's continue the game!")
+                time.sleep(2)
+                start(UserInfo.id(name))
         else:
             print(Fore.RED + "Username not found, please try again.")
             input("Press Enter to continue...")
@@ -222,7 +260,9 @@ def welcome_screen(a=1):
     else:
         utils.print_centered("2. Instructions (read once again)", width)
     utils.print_centered("3. Get Your Info", width)
-    utils.print_centered("4. Exit", width)
+    utils.print_centered("4. Delete Account", width)
+    utils.print_centered("5. Exit", width)
+
     utils.print_border(width+65)
     choice = input("Enter your choice: ".center(width)).strip()
     if choice == '1':
@@ -234,7 +274,7 @@ def welcome_screen(a=1):
         print(Fore.YELLOW + "\nInstructions: Solve puzzles, Beat the bot, Find the Cyber Assassin".center(width))
         input("\nPress Enter to return to menu.".center(width))
         welcome_screen(b)
-    elif choice == '4':
+    elif choice == '5':
         print(Fore.RED + "\nQuitting the experience...")
         time.sleep(random.random()*2+1.5)  # Simulate a delay for dramatic effect
         print(Fore.CYAN + "Closing the game...")
@@ -253,6 +293,45 @@ def welcome_screen(a=1):
             print(Fore.RED + "\nUser not found, please try again.".center(width))
             input("Press Enter to return to menu.")
             welcome_screen(b)
+    elif choice == '4':
+        print(Fore.LIGHTRED_EX + 'You will have to enter your user name and you will be prompted for DELETING your account PERMANETLY')
+        n = input('Enter your User Name (Account to be deleted): ')
+        if UserInfo.check(n):
+            con1 = input(Fore.RED + f'Are You Sure? Do you want to delete your account {n} PERMANENTLY (Yes/No): ').lower()
+            if con1 == 'y' or con1 == 'yes':
+                con2 = input('This Deletion is IRREVERSIBLE, all your data and Ratings will be lost (OK/No): ').lower()
+                if con2 == 'ok' or con2 == 'y' or con2 == 'k' or con2 == 'yes':
+                    I = UserInfo.id(n)
+                    UserInfo.sign_off(I)
+                    print(Fore.BLUE + 'Your Account was DELETED PERMANENTLY')
+                    input('Press enter to return to menu.')
+                    welcome_screen()
+                else:
+                    print('Your account has not been deleted')
+                    input('Press enter to return to menu.')
+                    welcome_screen()
+            elif con1 == 'no' or con1 == 'n':
+                print('Your Account was NOT removed')
+                input('Press enter to return to menu.')
+                welcome_screen()
+            else:
+                con3 = input('Please Conform, Do you was to DELETE your Account PERMANETLY? (Yes/No): ')
+                if con3 == 'y' or con3 == 'yes':
+                    con2 = input('This Deletion is IRREVERSIBLE, all your data and Ratings will be lost (OK/No): ').lower()
+                    if con2 in ['ok', 'y', 'k', 'yes']:
+                        I = UserInfo.id(n)
+                        UserInfo.sign_off(I)
+                        print('Your Account was DELETED PERMANENTLY')
+                        input('Press enter to return to menu.')
+                        welcome_screen()
+                    else:
+                        print('Your account has not been deleted')
+                        input('Press enter to return to menu.')
+                        welcome_screen()
+                else:
+                    print('Your Account was NOT removed')
+                    input('Press enter to return to menu.')
+                    welcome_screen()
     else:
         print(Fore.RED + "\nInvalid choice, try again.".center(width))
         input("Press Enter to continue.".center(width))

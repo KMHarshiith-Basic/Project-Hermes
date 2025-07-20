@@ -89,3 +89,30 @@ def result3(I,u,b):
     else:
         c.execute('UPDATE players SET Rating3 = ? WHERE id = ?', (2000,I))
         ud.commit()
+
+def Boss(I, u):
+    R=get_ratings(I)
+    r=R[4]
+    if u==1 and r<2000:
+        c.execute('UPDATE players SET BossRating = ? WHERE id = ?', (r+50, I))
+        ud.commit()
+    elif u==0 and r>100:
+        c.execute('UPDATE players SET BossRating = ? WHERE id = ?', (r-10, I))
+        ud.commit()
+    elif r>2000:
+        c.execute('UPDATE players SET BossRating = ? WHERE id = ?', (2000, I))
+        ud.commit()
+    elif r<100:
+        c.execute('UPDATE players SET BossRating = ? WHERE id = ?', (100, I))
+        ud.commit()
+
+def sign_off(I):
+    c.execute('DELETE FROM players WHERE id = ?', (I,))
+    ud.commit()
+
+def played(I):
+    c.execute('SELECT id, games_played FROM players WHERE id = ?', (I,))
+    np = c.fetchone()
+    np = int(np[1])
+    c.execute('UPDATE players SET games_played = ? WHERE id = ?', (np+1, I))
+    ud.commit()

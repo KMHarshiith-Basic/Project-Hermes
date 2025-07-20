@@ -73,6 +73,7 @@ def Boss(A):
     running = True
     player_health = 5
 
+    time.sleep(1)
     while running:
         clock.tick(60)
         win.fill(BLACK)
